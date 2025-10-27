@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       <div className="bg-red-600 text-white text-center py-4 text-2xl font-bold">
-        ✓ THIS IS THE CORRECT V0 CODE - DEPLOYED SUCCESSFULLY
+        ✓ CORRECT CODE - VERSION 18:25 - IF YOU SEE THIS, IT WORKED!
       </div>
       <Header />
       <VideoHero />
