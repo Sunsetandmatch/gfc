@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Menu, X, ShoppingCart, Calendar, Mic, Home } from "lucide-react"
+import { ShoppingCart, Calendar, Mic, Home } from "lucide-react"
 import { useCart } from "@/lib/cart-context"
 
 export default function Header() {
@@ -13,160 +13,166 @@ export default function Header() {
   const itemCount = items.reduce((total, item) => total + item.quantity, 0)
 
   const scrollToSection = (sectionId: string) => {
-    // Check if we're on the homepage
     if (window.location.pathname === "/") {
       const element = document.getElementById(sectionId)
       if (element) {
         element.scrollIntoView({ behavior: "smooth" })
       }
     } else {
-      // Navigate to homepage with hash
       window.location.href = `/#${sectionId}`
     }
     setIsMenuOpen(false)
   }
 
   return (
-    <header className="bg-white shadow-sm border-b fixed top-0 left-0 right-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-14 sm:h-16">
+    <header
+      style={{
+        backgroundColor: "white",
+        boxShadow: "0 1px 3px 0 rgba(0, 0, 0, 0.1)",
+        borderBottom: "1px solid #e5e7eb",
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 50,
+      }}
+    >
+      <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 1rem" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", height: "64px" }}>
           {/* Logo */}
-          <Link href="/" className="flex items-center">
+          <Link href="/" style={{ display: "flex", alignItems: "center" }}>
             <Image
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/90915215-AD23-400E-A679-7825CBDD4031.jpg-2OQSJPZ7rLWxjm35Y4erKFKUNUtRTO.jpeg"
               alt="Global Fans Club"
               width={200}
               height={40}
-              className="h-6 sm:h-8 w-auto"
+              style={{ height: "32px", width: "auto" }}
             />
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex space-x-6 xl:space-x-8">
+          <nav style={{ display: "flex", gap: "2rem", alignItems: "center" }}>
             <Link
               href="/"
-              className="text-black hover:text-[#2d5a27] font-medium flex items-center bg-transparent text-sm xl:text-base"
+              style={{
+                color: "black",
+                fontWeight: "500",
+                display: "flex",
+                alignItems: "center",
+                textDecoration: "none",
+                fontSize: "14px",
+              }}
             >
-              <Home className="h-3 w-3 xl:h-4 xl:w-4 mr-1" />
+              <Home style={{ height: "16px", width: "16px", marginRight: "4px" }} />
               Home
             </Link>
             <button
               onClick={() => scrollToSection("about")}
-              className="text-black hover:text-[#2d5a27] font-medium bg-transparent text-sm xl:text-base"
+              style={{
+                color: "black",
+                fontWeight: "500",
+                background: "transparent",
+                border: "none",
+                cursor: "pointer",
+                fontSize: "14px",
+              }}
             >
               About
             </button>
             <Link
               href="/shop"
-              className="text-black hover:text-[#2d5a27] font-medium bg-transparent text-sm xl:text-base"
+              style={{
+                color: "black",
+                fontWeight: "500",
+                textDecoration: "none",
+                fontSize: "14px",
+              }}
             >
               Shop
             </Link>
             <Link
               href="/experiences"
-              className="text-black hover:text-[#2d5a27] font-medium flex items-center bg-transparent text-sm xl:text-base"
+              style={{
+                color: "black",
+                fontWeight: "500",
+                display: "flex",
+                alignItems: "center",
+                textDecoration: "none",
+                fontSize: "14px",
+              }}
             >
-              <Calendar className="h-3 w-3 xl:h-4 xl:w-4 mr-1" />
+              <Calendar style={{ height: "16px", width: "16px", marginRight: "4px" }} />
               Events
             </Link>
             <button
               onClick={() => scrollToSection("guest-speakers")}
-              className="text-black hover:text-[#2d5a27] font-medium flex items-center bg-transparent text-sm xl:text-base"
+              style={{
+                color: "black",
+                fontWeight: "500",
+                display: "flex",
+                alignItems: "center",
+                background: "transparent",
+                border: "none",
+                cursor: "pointer",
+                fontSize: "14px",
+              }}
             >
-              <Mic className="h-3 w-3 xl:h-4 xl:w-4 mr-1" />
+              <Mic style={{ height: "16px", width: "16px", marginRight: "4px" }} />
               Speakers
             </button>
             <button
               onClick={() => scrollToSection("mailing-list")}
-              className="text-black hover:text-[#2d5a27] font-medium bg-transparent text-sm xl:text-base"
+              style={{
+                color: "black",
+                fontWeight: "500",
+                background: "transparent",
+                border: "none",
+                cursor: "pointer",
+                fontSize: "14px",
+              }}
             >
               Newsletter
             </button>
             <button
               onClick={() => scrollToSection("contact")}
-              className="text-black hover:text-[#2d5a27] font-medium bg-transparent text-sm xl:text-base"
+              style={{
+                color: "black",
+                fontWeight: "500",
+                background: "transparent",
+                border: "none",
+                cursor: "pointer",
+                fontSize: "14px",
+              }}
             >
               Contact
             </button>
           </nav>
 
-          {/* Cart and Mobile Menu */}
-          <div className="flex items-center space-x-3 sm:space-x-4">
-            <Link href="/cart" className="relative">
-              <ShoppingCart className="h-5 w-5 sm:h-6 sm:w-6 text-black hover:text-[#2d5a27]" />
-              {itemCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-[#2d5a27] text-white text-xs rounded-full h-4 w-4 sm:h-5 sm:w-5 flex items-center justify-center text-xs">
-                  {itemCount}
-                </span>
-              )}
-            </Link>
-
-            {/* Mobile menu button */}
-            <button className="lg:hidden p-1" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-              {isMenuOpen ? (
-                <X className="h-5 w-5 sm:h-6 sm:w-6 text-[#2d5a27]" />
-              ) : (
-                <Menu className="h-5 w-5 sm:h-6 sm:w-6 text-[#2d5a27]" />
-              )}
-            </button>
-          </div>
+          {/* Cart */}
+          <Link href="/cart" style={{ position: "relative" }}>
+            <ShoppingCart style={{ height: "24px", width: "24px", color: "black" }} />
+            {itemCount > 0 && (
+              <span
+                style={{
+                  position: "absolute",
+                  top: "-8px",
+                  right: "-8px",
+                  backgroundColor: "#2d5a27",
+                  color: "white",
+                  fontSize: "12px",
+                  borderRadius: "9999px",
+                  height: "20px",
+                  width: "20px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                {itemCount}
+              </span>
+            )}
+          </Link>
         </div>
-
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="lg:hidden py-4 border-t">
-            <nav className="flex flex-col space-y-3">
-              <Link
-                href="/"
-                className="text-black hover:text-[#2d5a27] font-medium flex items-center bg-transparent py-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <Home className="h-4 w-4 mr-2" />
-                Home
-              </Link>
-              <button
-                onClick={() => scrollToSection("about")}
-                className="text-black hover:text-[#2d5a27] font-medium text-left bg-transparent py-2"
-              >
-                About
-              </button>
-              <Link
-                href="/shop"
-                className="text-black hover:text-[#2d5a27] font-medium text-left bg-transparent py-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Shop
-              </Link>
-              <Link
-                href="/experiences"
-                className="text-black hover:text-[#2d5a27] font-medium flex items-center bg-transparent py-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <Calendar className="h-4 w-4 mr-2" />
-                Events
-              </Link>
-              <button
-                onClick={() => scrollToSection("guest-speakers")}
-                className="text-black hover:text-[#2d5a27] font-medium flex items-center bg-transparent py-2"
-              >
-                <Mic className="h-4 w-4 mr-2" />
-                Guest Speakers
-              </button>
-              <button
-                onClick={() => scrollToSection("mailing-list")}
-                className="text-black hover:text-[#2d5a27] font-medium text-left bg-transparent py-2"
-              >
-                Newsletter
-              </button>
-              <button
-                onClick={() => scrollToSection("contact")}
-                className="text-black hover:text-[#2d5a27] font-medium text-left bg-transparent py-2"
-              >
-                Contact
-              </button>
-            </nav>
-          </div>
-        )}
       </div>
     </header>
   )
