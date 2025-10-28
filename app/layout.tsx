@@ -2,7 +2,6 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
-import "./fallback.css" // Adding fallback CSS as backup in case Tailwind doesn't compile
 import { CartProvider } from "@/lib/cart-context"
 import { PricingProvider } from "@/lib/pricing-context"
 import { Toaster } from "@/components/ui/toaster"

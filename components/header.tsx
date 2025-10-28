@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { ShoppingCart, Calendar, Mic, Home } from "lucide-react"
+import { ShoppingCart, Home } from "lucide-react"
 import { useCart } from "@/lib/cart-context"
 
 export default function Header() {
@@ -50,7 +50,6 @@ export default function Header() {
             />
           </Link>
 
-          {/* Desktop Navigation */}
           <nav style={{ display: "flex", gap: "2rem", alignItems: "center" }}>
             <Link
               href="/"
@@ -66,6 +65,17 @@ export default function Header() {
               <Home style={{ height: "16px", width: "16px", marginRight: "4px" }} />
               Home
             </Link>
+            <Link
+              href="/shop"
+              style={{
+                color: "black",
+                fontWeight: "500",
+                textDecoration: "none",
+                fontSize: "14px",
+              }}
+            >
+              Shop
+            </Link>
             <button
               onClick={() => scrollToSection("about")}
               style={{
@@ -78,47 +88,6 @@ export default function Header() {
               }}
             >
               About
-            </button>
-            <Link
-              href="/shop"
-              style={{
-                color: "black",
-                fontWeight: "500",
-                textDecoration: "none",
-                fontSize: "14px",
-              }}
-            >
-              Shop
-            </Link>
-            <Link
-              href="/experiences"
-              style={{
-                color: "black",
-                fontWeight: "500",
-                display: "flex",
-                alignItems: "center",
-                textDecoration: "none",
-                fontSize: "14px",
-              }}
-            >
-              <Calendar style={{ height: "16px", width: "16px", marginRight: "4px" }} />
-              Events
-            </Link>
-            <button
-              onClick={() => scrollToSection("guest-speakers")}
-              style={{
-                color: "black",
-                fontWeight: "500",
-                display: "flex",
-                alignItems: "center",
-                background: "transparent",
-                border: "none",
-                cursor: "pointer",
-                fontSize: "14px",
-              }}
-            >
-              <Mic style={{ height: "16px", width: "16px", marginRight: "4px" }} />
-              Speakers
             </button>
             <button
               onClick={() => scrollToSection("mailing-list")}
