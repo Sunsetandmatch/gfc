@@ -172,87 +172,164 @@ const internationalTeams = [
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
+    <div style={{ minHeight: "100vh" }}>
       <Header />
-      <main className="pt-24 pb-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <main style={{ paddingTop: "96px", paddingBottom: "64px" }}>
+        <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 16px" }}>
           {/* Header */}
-          <div className="text-center mb-12">
-            <div className="flex items-center justify-center mb-6">
-              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white border-2 border-gray-200 rounded-full flex items-center justify-center shadow-md">
-                <span className="text-red-500 text-2xl sm:text-3xl">★</span>
+          <div style={{ textAlign: "center", marginBottom: "48px" }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "24px" }}>
+              <div
+                style={{
+                  width: "64px",
+                  height: "64px",
+                  backgroundColor: "white",
+                  border: "2px solid #e5e7eb",
+                  borderRadius: "50%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+                }}
+              >
+                <span style={{ color: "#ef4444", fontSize: "32px" }}>★</span>
               </div>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Shop Your Team</h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <h1 style={{ fontSize: "48px", fontWeight: "bold", color: "#111827", marginBottom: "16px" }}>
+              Shop Your Team
+            </h1>
+            <p style={{ fontSize: "20px", color: "#4b5563", maxWidth: "768px", margin: "0 auto" }}>
               Choose your team to explore authentic memorabilia, signed items, and exclusive collectibles
             </p>
           </div>
 
           {/* Club Teams Section */}
-          <div className="mb-16">
-            <div className="flex items-center justify-center mb-8">
-              <div className="w-10 h-10 bg-white border-2 border-gray-200 rounded-full flex items-center justify-center shadow-md mr-4">
-                <span className="text-red-500 text-lg">★</span>
+          <div style={{ marginBottom: "64px" }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "32px" }}>
+              <div
+                style={{
+                  width: "40px",
+                  height: "40px",
+                  backgroundColor: "white",
+                  border: "2px solid #e5e7eb",
+                  borderRadius: "50%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+                  marginRight: "16px",
+                }}
+              >
+                <span style={{ color: "#ef4444", fontSize: "18px" }}>★</span>
               </div>
-              <h2 className="text-3xl font-bold text-gray-900">Club Teams</h2>
+              <h2 style={{ fontSize: "32px", fontWeight: "bold", color: "#111827" }}>Club Teams</h2>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
+                gap: "24px",
+              }}
+            >
               {clubTeams.map((team) => (
-                <Link key={team.slug} href={`/shop/${team.slug}`}>
-                  <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 overflow-hidden group relative">
+                <Link key={team.slug} href={`/shop/${team.slug}`} style={{ textDecoration: "none" }}>
+                  <div
+                    style={{
+                      backgroundColor: "white",
+                      borderRadius: "8px",
+                      boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+                      overflow: "hidden",
+                      transition: "all 0.3s",
+                      position: "relative",
+                      cursor: "pointer",
+                    }}
+                  >
                     {/* Availability indicator */}
                     {team.available && (
-                      <div className="absolute top-2 right-2 z-10">
-                        <div className="w-6 h-6 bg-white border border-gray-200 rounded-full flex items-center justify-center shadow-sm">
-                          <span className="text-red-500 text-xs">★</span>
+                      <div style={{ position: "absolute", top: "8px", right: "8px", zIndex: 10 }}>
+                        <div
+                          style={{
+                            width: "24px",
+                            height: "24px",
+                            backgroundColor: "white",
+                            border: "1px solid #e5e7eb",
+                            borderRadius: "50%",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+                          }}
+                        >
+                          <span style={{ color: "#ef4444", fontSize: "12px" }}>★</span>
                         </div>
                       </div>
                     )}
 
                     {!team.available && (
-                      <div className="absolute top-2 right-2 z-10">
-                        <span className="bg-gray-500 text-white px-2 py-1 rounded-full text-xs font-medium">
+                      <div style={{ position: "absolute", top: "8px", right: "8px", zIndex: 10 }}>
+                        <span
+                          style={{
+                            backgroundColor: "#6b7280",
+                            color: "white",
+                            padding: "4px 8px",
+                            borderRadius: "16px",
+                            fontSize: "12px",
+                            fontWeight: "500",
+                          }}
+                        >
                           Coming Soon
                         </span>
                       </div>
                     )}
 
-                    {/* Team Color Header */}
-                    <div className={`h-3 ${team.color}`}></div>
-
                     {/* Card Content */}
-                    <div className="p-6 text-center">
+                    <div style={{ padding: "24px", textAlign: "center" }}>
                       {/* Team Logo */}
-                      <div className="flex justify-center mb-4">
+                      <div style={{ display: "flex", justifyContent: "center", marginBottom: "16px" }}>
                         <div
-                          className={`w-20 h-20 rounded-full flex items-center justify-center shadow-lg overflow-hidden ${
-                            team.name === "Liverpool" || team.name === "Arsenal" ? "bg-red-600" : "bg-white"
-                          }`}
+                          style={{
+                            width: "80px",
+                            height: "80px",
+                            borderRadius: "50%",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            boxShadow: "0 10px 15px rgba(0,0,0,0.1)",
+                            overflow: "hidden",
+                            backgroundColor: team.name === "Liverpool" || team.name === "Arsenal" ? "#dc2626" : "white",
+                          }}
                         >
                           <Image
                             src={team.logo || "/placeholder.svg"}
                             alt={`${team.name} logo`}
                             width={80}
                             height={80}
-                            className="object-cover w-full h-full"
+                            style={{ objectFit: "cover", width: "100%", height: "100%" }}
                           />
                         </div>
                       </div>
 
                       {/* Team Name */}
-                      <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#2d5a27] transition-colors">
+                      <h3 style={{ fontSize: "20px", fontWeight: "bold", color: "#111827", marginBottom: "8px" }}>
                         {team.name}
                       </h3>
 
                       {/* Team Description */}
-                      <p className="text-gray-600 text-sm mb-4">{team.description}</p>
+                      <p style={{ color: "#4b5563", fontSize: "14px", marginBottom: "16px" }}>{team.description}</p>
 
                       {/* Shop Button */}
-                      <div className="flex items-center justify-center text-[#2d5a27] font-medium group-hover:text-[#1f3e1a]">
-                        <span className="mr-2">{team.available ? "Shop Now" : "View Collection"}</span>
-                        <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          color: "#2d5a27",
+                          fontWeight: "500",
+                        }}
+                      >
+                        <span style={{ marginRight: "8px" }}>{team.available ? "Shop Now" : "View Collection"}</span>
+                        <ChevronRight style={{ height: "16px", width: "16px" }} />
                       </div>
                     </div>
                   </div>
@@ -262,55 +339,111 @@ export default function Home() {
           </div>
 
           {/* International Teams Section */}
-          <div className="mb-16">
-            <div className="flex items-center justify-center mb-8">
-              <div className="w-10 h-10 bg-white border-2 border-gray-200 rounded-full flex items-center justify-center shadow-md mr-4">
-                <span className="text-red-500 text-lg">★</span>
+          <div style={{ marginBottom: "64px" }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "32px" }}>
+              <div
+                style={{
+                  width: "40px",
+                  height: "40px",
+                  backgroundColor: "white",
+                  border: "2px solid #e5e7eb",
+                  borderRadius: "50%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+                  marginRight: "16px",
+                }}
+              >
+                <span style={{ color: "#ef4444", fontSize: "18px" }}>★</span>
               </div>
-              <h2 className="text-3xl font-bold text-gray-900">International Teams</h2>
+              <h2 style={{ fontSize: "32px", fontWeight: "bold", color: "#111827" }}>International Teams</h2>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
+                gap: "24px",
+              }}
+            >
               {internationalTeams.map((team) => (
-                <Link key={team.slug} href={`/shop/${team.slug}`}>
-                  <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 overflow-hidden group relative">
+                <Link key={team.slug} href={`/shop/${team.slug}`} style={{ textDecoration: "none" }}>
+                  <div
+                    style={{
+                      backgroundColor: "white",
+                      borderRadius: "8px",
+                      boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+                      overflow: "hidden",
+                      transition: "all 0.3s",
+                      position: "relative",
+                      cursor: "pointer",
+                    }}
+                  >
                     {/* Coming Soon indicator */}
-                    <div className="absolute top-2 right-2 z-10">
-                      <span className="bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-medium">
+                    <div style={{ position: "absolute", top: "8px", right: "8px", zIndex: 10 }}>
+                      <span
+                        style={{
+                          backgroundColor: "#3b82f6",
+                          color: "white",
+                          padding: "4px 8px",
+                          borderRadius: "16px",
+                          fontSize: "12px",
+                          fontWeight: "500",
+                        }}
+                      >
                         Coming Soon
                       </span>
                     </div>
 
-                    {/* Team Color Header */}
-                    <div className={`h-3 ${team.color}`}></div>
-
                     {/* Card Content */}
-                    <div className="p-6 text-center">
+                    <div style={{ padding: "24px", textAlign: "center" }}>
                       {/* Team Logo */}
-                      <div className="flex justify-center mb-4">
-                        <div className="w-20 h-20 rounded-full flex items-center justify-center shadow-lg overflow-hidden bg-white border-2 border-gray-200">
+                      <div style={{ display: "flex", justifyContent: "center", marginBottom: "16px" }}>
+                        <div
+                          style={{
+                            width: "80px",
+                            height: "80px",
+                            borderRadius: "50%",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            boxShadow: "0 10px 15px rgba(0,0,0,0.1)",
+                            overflow: "hidden",
+                            backgroundColor: "white",
+                            border: "2px solid #e5e7eb",
+                          }}
+                        >
                           <Image
                             src={team.logo || "/placeholder.svg"}
                             alt={`${team.name} logo`}
                             width={80}
                             height={80}
-                            className="object-cover w-full h-full"
+                            style={{ objectFit: "cover", width: "100%", height: "100%" }}
                           />
                         </div>
                       </div>
 
                       {/* Team Name */}
-                      <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#2d5a27] transition-colors">
+                      <h3 style={{ fontSize: "20px", fontWeight: "bold", color: "#111827", marginBottom: "8px" }}>
                         {team.name}
                       </h3>
 
                       {/* Team Description */}
-                      <p className="text-gray-600 text-sm mb-4">{team.description}</p>
+                      <p style={{ color: "#4b5563", fontSize: "14px", marginBottom: "16px" }}>{team.description}</p>
 
                       {/* Shop Button */}
-                      <div className="flex items-center justify-center text-[#2d5a27] font-medium group-hover:text-[#1f3e1a]">
-                        <span className="mr-2">View Collection</span>
-                        <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          color: "#2d5a27",
+                          fontWeight: "500",
+                        }}
+                      >
+                        <span style={{ marginRight: "8px" }}>View Collection</span>
+                        <ChevronRight style={{ height: "16px", width: "16px" }} />
                       </div>
                     </div>
                   </div>
@@ -320,84 +453,55 @@ export default function Home() {
           </div>
 
           {/* Liverpool Featured Section */}
-          <div className="mt-16 bg-gradient-to-r from-red-600 to-red-700 text-white p-8 rounded-lg relative">
-            <div className="absolute top-4 right-4">
-              <div className="w-8 h-8 bg-white border-2 border-gray-200 rounded-full flex items-center justify-center shadow-md">
-                <span className="text-red-500 text-sm">★</span>
+          <div
+            style={{
+              marginTop: "64px",
+              background: "linear-gradient(to right, #dc2626, #b91c1c)",
+              color: "white",
+              padding: "32px",
+              borderRadius: "8px",
+              position: "relative",
+            }}
+          >
+            <div style={{ position: "absolute", top: "16px", right: "16px" }}>
+              <div
+                style={{
+                  width: "32px",
+                  height: "32px",
+                  backgroundColor: "white",
+                  border: "2px solid #e5e7eb",
+                  borderRadius: "50%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+                }}
+              >
+                <span style={{ color: "#ef4444", fontSize: "14px" }}>★</span>
               </div>
             </div>
-            <div className="text-center">
-              <h2 className="text-3xl font-bold mb-4">Liverpool Collection Available Now!</h2>
-              <p className="text-xl mb-6 opacity-90">
+            <div style={{ textAlign: "center" }}>
+              <h2 style={{ fontSize: "32px", fontWeight: "bold", marginBottom: "16px" }}>
+                Liverpool Collection Available Now!
+              </h2>
+              <p style={{ fontSize: "20px", marginBottom: "24px", opacity: 0.9 }}>
                 Explore our exclusive Liverpool memorabilia including signed shirts, framed displays, and rare
                 collectibles
               </p>
-              <Link href="/shop/liverpool" className="btn-secondary px-8 py-3 inline-block">
+              <Link
+                href="/shop/liverpool"
+                style={{
+                  backgroundColor: "white",
+                  color: "#2d5a27",
+                  padding: "12px 32px",
+                  display: "inline-block",
+                  borderRadius: "4px",
+                  fontWeight: "500",
+                  textDecoration: "none",
+                }}
+              >
                 Shop Liverpool Collection
               </Link>
-            </div>
-          </div>
-
-          {/* All Teams Link */}
-          <div className="text-center mt-12">
-            <Link href="/shop/all" className="btn-secondary px-8 py-3 inline-flex items-center">
-              <span className="mr-2">Browse All Available Items</span>
-              <ChevronRight className="h-4 w-4" />
-            </Link>
-          </div>
-
-          {/* Info Section */}
-          <div className="mt-16 bg-gray-50 rounded-lg p-8 relative">
-            <div className="absolute top-4 right-4">
-              <div className="w-6 h-6 bg-white border border-gray-200 rounded-full flex items-center justify-center shadow-sm">
-                <span className="text-red-500 text-xs">★</span>
-              </div>
-            </div>
-            <div className="text-center">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Authentic Memorabilia</h2>
-              <p className="text-gray-600 max-w-3xl mx-auto mb-8">
-                Every item in our collection comes with a Certificate of Authenticity. From signed shirts to framed
-                displays, we offer premium memorabilia from your favorite teams and legendary players.
-              </p>
-
-              <div className="bg-white p-6 rounded-lg shadow-sm mb-6 max-w-md mx-auto">
-                <h3 className="font-semibold text-gray-900 mb-3">Get Notified:</h3>
-                <p className="text-sm text-gray-600 mb-4">
-                  Be the first to know when new team collections become available
-                </p>
-                <a
-                  href="mailto:hello@globalfansclub.com?subject=Notify me about new team collections&body=Hi, I'm interested in being notified when new team memorabilia collections become available. Please add me to your notification list."
-                  className="btn-primary px-6 py-2 text-sm"
-                >
-                  Join Notification List
-                </a>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="text-center">
-                <div className="w-12 h-12 bg-[#2d5a27] rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-white font-bold">✓</span>
-                </div>
-                <h3 className="font-semibold text-gray-900 mb-2">Certified Authentic</h3>
-                <p className="text-gray-600 text-sm">All items come with official Certificate of Authenticity</p>
-              </div>
-
-              <div className="text-center">
-                <div className="w-12 h-12 bg-[#2d5a27] rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-white font-bold">🚚</span>
-                </div>
-                <h3 className="font-semibold text-gray-900 mb-2">Fast Shipping</h3>
-                <p className="text-gray-600 text-sm">Secure delivery within 7 days worldwide</p>
-              </div>
-
-              <div className="text-center">
-                <div className="w-12 h-12 bg-[#2d5a27] rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-white font-bold">⭐</span>
-                </div>
-                <h3 className="font-semibold text-gray-900 mb-2">Premium Quality</h3>
-                <p className="text-gray-600 text-sm">Professional framing and presentation ready</p>
-              </div>
             </div>
           </div>
         </div>
